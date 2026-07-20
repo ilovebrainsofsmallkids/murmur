@@ -6,6 +6,8 @@ Hold `fn`, speak, release — clean text appears at your cursor in any app.
 No cloud, no subscription, no word limits. Your audio and transcripts never
 leave your Mac.
 
+![Murmur dashboard](Resources/screenshot.png)
+
 Murmur is an open-source, fully local take on the modern AI dictation app
 (in the spirit of Wispr Flow), built natively in Swift on Apple's on-device
 speech and language models, with an optional local Whisper engine.

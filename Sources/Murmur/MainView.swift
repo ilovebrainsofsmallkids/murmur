@@ -354,6 +354,7 @@ struct HomePage: View {
     @Binding var page: Page
     @State private var searchText = ""
     @State private var searchOpen = false
+    @State private var showClearConfirm = false
     @State private var hoveredRow: String?
     @State private var editingEntry: HistoryEntry?
     @State private var editText = ""
@@ -655,6 +656,23 @@ struct HomePage: View {
                                     .foregroundStyle(.secondary)
                             }
                             .buttonStyle(.plain)
+                            Button {
+                                showClearConfirm = true
+                            } label: {
+                                Image(systemName: "trash")
+                                    .foregroundStyle(.secondary)
+                            }
+                            .buttonStyle(.plain)
+                            .help("Clear all history")
+                            .confirmationDialog(
+                                "Clear all history?", isPresented: $showClearConfirm) {
+                                Button("Clear History", role: .destructive) {
+                                    app.clearHistoryEntries()
+                                }
+                            } message: {
+                                Text("This permanently deletes all \(app.entries.count) " +
+                                     "saved transcripts. This can't be undone.")
+                            }
                         }
                     }
                     .padding(.top, index == 0 ? 0 : 14)
